@@ -2,9 +2,9 @@ spring:
   application:
     name: Maa-Sharda-Academy
   datasource:
-    url: jdbc:mysql://mysql.railway.internal:3306/maashardadb?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://iriguchi.proxy.rlwy.net:13603/railway?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
     username: root
-    password: root
+    password: dMGAajpmvyQJJMCfzxslldBDqiuriVLH
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
