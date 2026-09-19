@@ -49,7 +49,9 @@ public class Student {
     private String phone;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "music_option")
     private MusicOption musicOption;
+    
     
     @Column(columnDefinition = "TEXT")
     private String address;

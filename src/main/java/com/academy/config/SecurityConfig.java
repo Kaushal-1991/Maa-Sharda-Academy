@@ -96,7 +96,7 @@ public class SecurityConfig {
 
 						.requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/refresh", "/api/students/register").permitAll()
 
-						.requestMatchers("/api/students/**").hasRole("ADMIN")
+						///.requestMatchers("/api/students/**").hasRole("ADMIN")
 
 						.anyRequest().authenticated())
 

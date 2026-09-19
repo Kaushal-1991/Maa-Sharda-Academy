@@ -32,6 +32,7 @@ public class JwtService {
         return Jwts.builder()
                 .subject(email)
                 .claim("role", role)
+                .claim("name", "ADMIN")
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(getSigningKey())
