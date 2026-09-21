@@ -8,7 +8,7 @@ public class ConvertPassword {
 	public static void main(String[] args) {
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-		String encodedPassword = passwordEncoder.encode("Admin@12345");
+		String encodedPassword = passwordEncoder.encode("tushar@123");
 
 		System.out.println(encodedPassword);
 	}

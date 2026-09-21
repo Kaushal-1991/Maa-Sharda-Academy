@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.academy.dto.StudentCountDto;
 import com.academy.dto.StudentDto;
 import com.academy.response.ApiResponse;
 import com.academy.service.StudentService;
@@ -42,4 +43,11 @@ public class StudentController {
 
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
+	
+	@GetMapping("/count")
+    public ResponseEntity<StudentCountDto> getStudentCounts() {
+        return ResponseEntity.ok(
+                studentService.getStudentCounts()
+        );
+    }
 }
