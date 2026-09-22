@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.academy.dto.StudentCountDto;
 import com.academy.dto.StudentDto;
+import com.academy.dto.StudentRegisteredEvent;
 import com.academy.entity.Student;
 import com.academy.exceptions.AcademyException;
+import com.academy.rabbitmq.StudentNotificationProducer;
 import com.academy.reposistory.StudentReposistory;
 import com.academy.service.StudentService;
 
@@ -22,6 +24,9 @@ public class StudentServiceImpl implements StudentService {
 	
 	@Autowired
 	private StudentReposistory studentReposistory;
+	
+	@Autowired
+	private final StudentNotificationProducer notificationProducer;
 
 	@Override
 	public StudentDto register(StudentDto studentDto) {
@@ -30,7 +35,8 @@ public class StudentServiceImpl implements StudentService {
 			throw new AcademyException("Email already registered", HttpStatus.CONFLICT);
 		}
 		Student savedStudent = studentReposistory.save(studentDto.toEntity());
-		
+		StudentRegisteredEvent registeredEvent = new StudentRegisteredEvent(savedStudent.getId(),savedStudent.getName(),savedStudent.getEmail());
+		notificationProducer.sendStudentRegisteredEvent(registeredEvent);
 		return savedStudent.toDto();
 	}
 
