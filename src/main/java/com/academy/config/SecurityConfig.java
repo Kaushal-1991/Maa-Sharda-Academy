@@ -94,7 +94,7 @@ public class SecurityConfig {
 
 				.authorizeHttpRequests(auth -> auth
 
-						.requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/refresh", "/api/students/register").permitAll()
+						.requestMatchers("/api/auth/register","/ws","/ws/**", "/api/auth/login", "/api/auth/refresh", "/api/students/register").permitAll()
 
 						///.requestMatchers("/api/students/**").hasRole("ADMIN")
 
