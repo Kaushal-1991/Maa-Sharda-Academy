@@ -37,7 +37,7 @@ public class NotificationServiceImpl
     public List<Notification> getUnreadNotifications() {
 
         return notificationRepository
-                .findByReadFalseOrderByCreatedAtDesc();
+                .findByIsReadFalseOrderByCreatedAtDesc();
     }
 
     @Override
@@ -83,7 +83,7 @@ public class NotificationServiceImpl
 
         List<Notification> notifications =
                 notificationRepository
-                        .findByReadFalseOrderByCreatedAtDesc();
+                        .findByIsReadFalseOrderByCreatedAtDesc();
 
         notifications.forEach(
                 notification -> notification.setRead(true)
