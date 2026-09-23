@@ -25,16 +25,14 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT")
     private String message;
 
-    @Column(name = "is_read", nullable = false)
+    @Column(name = "is_read")
     private boolean isRead = false;
 
-    @Column(nullable = false)
     private LocalDateTime createdAt;
 
     @PrePersist
