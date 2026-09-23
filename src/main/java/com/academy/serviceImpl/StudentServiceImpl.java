@@ -52,4 +52,11 @@ public class StudentServiceImpl implements StudentService {
 		return studentReposistory.getStudentCounts();
 	}
 
+	@Override
+	public void deleteStudent(Long id) {
+		Student student = studentReposistory.findById(id)
+		        .orElseThrow(() -> new AcademyException("Student is not available",  HttpStatus.MOVED_PERMANENTLY));
+		studentReposistory.delete(student);
+	}
+
 }
