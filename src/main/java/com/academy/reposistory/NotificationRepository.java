@@ -7,6 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.academy.entity.Notification;
 
 public interface NotificationRepository extends JpaRepository<Notification, Long> {
-	List<Notification> findAllByOrderByCreatedAtDesc();
-    List<Notification> findByReadFalseOrderByCreatedAtDesc();
+   // Get all notifications, newest first
+    List<Notification> findAllByOrderByCreatedAtDesc();
+
+    // Get only unread notifications, newest first
+    List<Notification> findByIsReadFalseOrderByCreatedAtDesc();
 }
