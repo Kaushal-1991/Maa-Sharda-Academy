@@ -2,6 +2,7 @@ package com.academy.dto;
 
 import com.academy.entity.Student;
 import com.academy.enums.MusicOption;
+import com.academy.enums.RegistrationStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,6 +18,8 @@ public class StudentDto {
 	private String phone;
 	private MusicOption musicOption;
 	private String address;
+	private RegistrationStatus registrationStatus;
+	private String registrationNumber;
 	
 	public Student toEntity() {
 	  return Student.builder()
@@ -26,6 +29,8 @@ public class StudentDto {
 			        .phone(phone)
 			        .musicOption(musicOption)
 			        .address(address)
+			        .registrationStatus(registrationStatus)
+			        .registrationNumber(registrationNumber)
 			        .build();
 	}
 }

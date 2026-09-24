@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.academy.dto.StudentCountDto;
 import com.academy.dto.StudentDto;
+import com.academy.enums.RegistrationStatus;
 import com.academy.response.ApiResponse;
 import com.academy.service.StudentService;
 
@@ -57,5 +59,11 @@ public class StudentController {
 	public ResponseEntity<String> deleteStudent(@PathVariable Long id){
 		studentService.deleteStudent(id);
 		return ResponseEntity.status(HttpStatus.OK).body("Student Deleted Sucessfully !!!");
+	}
+	
+	@PutMapping("/registrationStatus/{id}/{status}")
+	public ResponseEntity<String> registartionStudent(@PathVariable Long id,@PathVariable RegistrationStatus status){
+		studentService.registartionStudent(id, status);
+		return ResponseEntity.status(HttpStatus.OK).body("Student Status Changed !!!");
 	}
 }

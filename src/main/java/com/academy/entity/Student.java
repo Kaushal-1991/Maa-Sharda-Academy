@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.academy.dto.StudentDto;
 import com.academy.enums.MusicOption;
+import com.academy.enums.RegistrationStatus;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -52,9 +53,14 @@ public class Student {
     @Column(name = "music_option")
     private MusicOption musicOption;
     
-    
     @Column(columnDefinition = "TEXT")
     private String address;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(name="registration_status")
+    private RegistrationStatus registrationStatus;
+    
+    private String registrationNumber;
     
     @Column(name = "created_date", nullable = false)
     private LocalDateTime createdDate;
@@ -75,6 +81,6 @@ public class Student {
     }
     
     public StudentDto toDto() {
-    	return new StudentDto(id,name,email,phone,musicOption,address);
+    	return new StudentDto(id,name,email,phone,musicOption,address,registrationStatus,registrationNumber);
     }
 }
