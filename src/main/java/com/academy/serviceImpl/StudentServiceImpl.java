@@ -42,7 +42,6 @@ public class StudentServiceImpl implements StudentService {
 		Student student = studentDto.toEntity();
 
 		student.setRegistrationStatus(RegistrationStatus.PENDING);
-		student.setRegistrationNumber(GenrateRegistrationNumber.generateRegistrationNumber(student.getName()));
 		Student savedStudent = studentReposistory.save(student);
 
 //		StudentRegisteredEvent registeredEvent = new StudentRegisteredEvent(savedStudent.getId(),
@@ -78,6 +77,7 @@ public class StudentServiceImpl implements StudentService {
 				.orElseThrow(() -> new AcademyException("Student is not available", HttpStatus.MOVED_PERMANENTLY));
 		if(RegistrationStatus.COMPLETED.equals(registrationStatus)) {
 			student.setRegistrationStatus(RegistrationStatus.COMPLETED);
+			student.setRegistrationNumber(GenrateRegistrationNumber.generateRegistrationNumber(student.getName()));
 		}
 		
 		studentReposistory.save(student);
