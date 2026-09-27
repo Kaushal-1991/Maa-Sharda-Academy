@@ -1,6 +1,7 @@
 package com.academy.dto;
 
 import com.academy.entity.Student;
+import com.academy.enums.Mode;
 import com.academy.enums.MusicOption;
 import com.academy.enums.RegistrationStatus;
 
@@ -17,6 +18,7 @@ public class StudentDto {
 	private String email;
 	private String phone;
 	private MusicOption musicOption;
+	private Mode mode;
 	private String address;
 	private RegistrationStatus registrationStatus;
 	private String registrationNumber;
@@ -28,6 +30,7 @@ public class StudentDto {
 			        .email(email)
 			        .phone(phone)
 			        .musicOption(musicOption)
+			        .mode(mode)
 			        .address(address)
 			        .registrationStatus(registrationStatus)
 			        .registrationNumber(registrationNumber)

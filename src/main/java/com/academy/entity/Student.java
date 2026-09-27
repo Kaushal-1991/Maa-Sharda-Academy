@@ -3,6 +3,7 @@ package com.academy.entity;
 import java.time.LocalDateTime;
 
 import com.academy.dto.StudentDto;
+import com.academy.enums.Mode;
 import com.academy.enums.MusicOption;
 import com.academy.enums.RegistrationStatus;
 
@@ -53,6 +54,10 @@ public class Student {
     @Column(name = "music_option")
     private MusicOption musicOption;
     
+    @Enumerated(EnumType.STRING)
+    @Column(name = "mode")
+    private Mode mode;
+    
     @Column(columnDefinition = "TEXT")
     private String address;
     
@@ -81,6 +86,6 @@ public class Student {
     }
     
     public StudentDto toDto() {
-    	return new StudentDto(id,name,email,phone,musicOption,address,registrationStatus,registrationNumber);
+    	return new StudentDto(id,name,email,phone,musicOption,mode,address,registrationStatus,registrationNumber);
     }
 }
